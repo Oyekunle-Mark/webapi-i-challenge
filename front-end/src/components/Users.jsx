@@ -5,7 +5,7 @@ import axios from 'axios';
 import userContext from '../userContext';
 
 export default () => {
-  const { users, deleteUser } = useContext(userContext);
+  const { users, deleteUser, setEditedUser } = useContext(userContext);
 
   const handleDelete = id => {
     axios
@@ -14,13 +14,18 @@ export default () => {
       .catch(err => console.log(err));
   };
 
+  const handleUpdate = user => {
+    setEditedUser(user.id, { name: user.name, bio: user.bio });
+  };
+
   return (
     <div>
-      {users.map(us => (
+      {users.map(user => (
         <div key={v4()}>
-          <h2>{us.name}</h2>
-          <h4>{us.bio}</h4>
-          <button onClick={() => handleDelete(us.id)}>Delete</button>
+          <h2>{user.name}</h2>
+          <h4>{user.bio}</h4>
+          <button onClick={() => handleDelete(user.id)}>Delete</button>
+          <button onClick={() => handleUpdate(user)}>Edit</button>
         </div>
       ))}
     </div>
