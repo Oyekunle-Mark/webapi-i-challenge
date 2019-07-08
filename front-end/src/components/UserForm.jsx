@@ -1,7 +1,47 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
 
 import userContext from '../userContext';
+
+const StyledForm = styled.form`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  max-width: 650px;
+  border-radius: 5px;
+  padding: 20px;
+  background: #24292e;
+  margin-bottom: 20px;
+
+  input {
+    width: 200px;
+    height: 22px;
+    border: 1px solid #24292e;
+    margin: 10px;
+    padding: 5px;
+    font-family: monospace;
+    font-size: 12px;
+    border-radius: 4px;
+  }
+
+  button {
+    padding: 5px;
+    font-family: monospace;
+    font-size: 12px;
+    border-radius: 4px;
+    border: 1px solid #24292e;
+    width: 120px;
+    height: 34px;
+    background: #2cbe4e;
+    color: #ffffff;
+  }
+
+  button:hover {
+    cursor: pointer;
+  }
+`;
 
 export default () => {
   const {
@@ -51,7 +91,7 @@ export default () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <StyledForm onSubmit={handleSubmit}>
       <input
         type="text"
         name="name"
@@ -67,6 +107,6 @@ export default () => {
         placeholder="user's bio"
       />
       <button type="submit">{isEditing ? 'Update' : 'Add Friend'}</button>
-    </form>
+    </StyledForm>
   );
 };
