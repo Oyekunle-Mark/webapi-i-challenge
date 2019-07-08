@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
 
 import UserContext from './userContext';
 import Users from './components/Users';
 import UserForm from './components/UserForm';
+import Header from './components/Header';
+
+const StyledApp = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  font-family: monospace;
+`;
 
 class App extends Component {
   state = {
@@ -58,12 +68,13 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <StyledApp>
         <UserContext.Provider value={this.state}>
+          <Header />
           <UserForm />
           <Users />
         </UserContext.Provider>
-      </div>
+      </StyledApp>
     );
   }
 }
