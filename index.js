@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const morgan = require('morgan');
 
 const User = require('./data/db');
 
@@ -8,6 +9,7 @@ const PORT = 5000;
 
 server.use(express.json());
 server.use(cors());
+server.use(morgan('dev'));
 
 server.get('/api/users', (req, res) => {
   User.find()
