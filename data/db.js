@@ -1,14 +1,7 @@
 const knex = require('knex');
 const knexConfig = require('../knexfile.js');
-const db = knex(knexConfig.development);
 
-module.exports = {
-  find,
-  findById,
-  insert,
-  update,
-  remove,
-};
+const db = knex(knexConfig.development);
 
 function find() {
   return db('users');
@@ -37,3 +30,11 @@ function remove(id) {
     .where('id', Number(id))
     .del();
 }
+
+module.exports = {
+  find,
+  findById,
+  insert,
+  update,
+  remove,
+};
